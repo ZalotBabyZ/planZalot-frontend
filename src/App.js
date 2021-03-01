@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import DateContext from '@context/DateContext';
 
+import DailyJournal from '@pages/DailyJournal';
+import NavBar from '@components/NavBar';
+
+const today = new Date().toISOString().slice(0, 10);
 function App() {
+  const [date, setDate] = useState(today);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DateContext.Provider value={{ date, setDate }}>
+        {/* navbar */}
+        <div className="hidden-onprint">
+          <NavBar />
+        </div>
+        {/* mainpage */}
+        <div>
+          <DailyJournal />
+        </div>
+      </DateContext.Provider>
     </div>
   );
 }

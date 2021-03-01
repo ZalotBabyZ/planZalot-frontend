@@ -1,38 +1,68 @@
+:root {
+  --text-color: #16697a;
+  --highlight-color: #82c0cc;
+  --primary-color: #489fb5;
+  --secondary-color: #ffa62b;
+  --bg-color: #ede7e3;
+}
 .App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-bar {
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-page-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--text-color);
+}
+.main-page-container > * {
+  width: 98%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.main-page-header {
+  height: 150px;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: pink;
+}
+.main-page-body {
+  height: 850px;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: lightblue;
+}
+.main-page-footer {
+  height: 80px;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: lightgreen;
+}
+@page {
+  size: A4;
+  margin: 0.5cm;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media print {
+  * {
+    /* height: initial !important; */
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
   }
-  to {
-    transform: rotate(360deg);
+  .hidden-onprint,
+  .hidden-onprint * {
+    display: none;
   }
 }
